@@ -1,0 +1,15 @@
+@for $i from 0 through 5
+    .p#{$i}
+        @include padding($jac-padding-1 * $i)
+    .p#{$i}-x
+        @include padding-horizontal($jac-padding-1* $i)
+    .p#{$i}-y
+        @include padding($jac-padding-1* $i, 0)
+    .p#{$i}-t
+        @include margin($jac-padding-1 * $i, 0, 0, 0)
+    .p#{$i}-b
+        @include margin(0, 0, $jac-padding-1 * $i, 0)
+    .p#{$i}-l
+        @include margin(0, 0, 0, $jac-padding-1 * $i)
+    .p#{$i}-r
+        @include margin(0, $jac-padding-1 * $i, 0, 0)

@@ -1,0 +1,72 @@
+%disabled-button
+    color: darken($grey, 20%)
+    cursor: not-allowed
+    border-color: transparent
+
+.buttons
+    display: flex
+    flex-wrap: wrap
+    .button
+        white-space: nowrap
+        flex: 1
+        @include margin($jac-margin-base)
+        &:first-of-type
+            margin-left: 0
+            margin-inline-start: unset
+        &:last-of-type
+            margin-right: 0
+            margin-inline-end: unset
+
+.button
+    border: none
+    border-radius: $jac-border-radius-small
+    font-weight: $jac-weight-light
+    transition: background 120ms linear, color 120ms linear
+    align-self: flex-start
+    cursor: pointer
+    @include padding($jac-padding-base, $jac-padding-1)
+    @include button(map-get($jac-grey, 300))
+    &:disabled
+        background-color: $grey
+        @extend %disabled-button
+        &:hover,
+        &:focus,
+        &:active
+            background-color: $grey
+            color: darken($grey, 20%)
+            border-color: transparent
+    &.--outline,
+        background-color: transparent
+        &:disabled
+            border-color: $grey
+            @extend %disabled-button
+            &:hover,
+            &:focus,
+            &:active
+                background-color: transparent
+    &.--rounded
+        border-radius: $jac-border-radius-large
+    &.--block
+        border-radius: 0
+        width: 100%
+        text-align: center
+    &.--inverted
+        background-color: transparent
+    &.--small
+        @include font-size(12px)
+        @include padding(1px, $jac-padding-base)
+    &.--big
+        @include font-size(20px)
+        @include padding($jac-padding-1, $jac-padding-3)
+    &.--large
+        @include font-size(24px)
+        @include padding($jac-padding-2, $jac-padding-5)
+
+@each $color, $value in $colors
+    .button-#{$color}
+        @include button($value)
+
+@include media-breakpoint-down(sm, $screen-breakpoints)
+    .buttons
+        .button
+            @include margin-horizontal(0)

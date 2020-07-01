@@ -1,0 +1,77 @@
+=navbar-children
+  .navbar-start,
+  .navbar-end,
+  .navbar-content
+    @content
+  
+.navbar
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  align-items: center
+  min-height: $jac-navbar-height
+  @include padding(0, $jac-padding-1)
+  @include border($jac-border-color, bottom)
+
+.navbar-shrinkable
+  flex-wrap: wrap
+  @include navbar-children
+    flex-shrink: 1
+    flex-grow: 1
+    flex-basis: auto
+
+.navbar-start,
+.navbar-end,
+.navbar-content
+  flex: 1
+  display: flex
+
+.navbar-start
+  justify-content: flex-start
+
+.navbar-content
+  justify-content: center
+
+.navbar-end
+  justify-content: flex-end
+
+.navbar-links
+    display: flex
+    align-items: center
+    ul,
+    ol
+        margin: 0
+        padding: 0
+        display: inherit
+        align-items: center
+        li
+            list-style: none
+    .navbar-link
+        color: inherit
+        border-radius: $jac-border-radius-small
+        font-weight: $jac-weight-light
+        height: 100%
+        white-space: nowrap
+        transition: background 120ms linear
+        @include padding($jac-padding-base, $jac-padding-1)
+        &:hover
+          background-color: $jac-default-hover-color
+          color: var(--jac-color-blue, $blue)
+    .button,
+    button
+      @include margin-horizontal($jac-margin-base)
+
+@include media-breakpoint-down(sm, $screen-breakpoints)     
+  .navbar
+    padding: 0 !important
+        
+@each $breakpoint in map-keys($screen-breakpoints)
+  $infix: breakpoint-infix($breakpoint, $screen-breakpoints)
+  @include media-breakpoint-down($breakpoint, $screen-breakpoints)
+    .navbar-stacked-#{$infix}
+      flex-direction: column
+      @include navbar-children
+        overflow-x: auto
+        max-width: 100%
+        display: block
+        @include margin($jac-margin-1, 0)

@@ -1,0 +1,7 @@
+$flex-positions: flex-start, flex-end, center
+
+@each $pos in $flex-positions
+  .flex--align-#{$pos}
+    align-items: $pos
+  .flex--justify-#{$pos}
+    justify-content: $pos

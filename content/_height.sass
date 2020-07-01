@@ -1,0 +1,6 @@
+@for $i from 1 through ceil(100 / 5)
+  $val: $i * 10
+  .h#{$val}
+    height: $val * 1%
+  .vh#{$val}
+    min-height: $val * 1vh

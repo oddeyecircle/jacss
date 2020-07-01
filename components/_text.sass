@@ -1,0 +1,44 @@
+.text
+    @each $color, $value in $colors
+        &--color-#{$color}
+            color: var(--jac-#{$color}, $value)
+    @each $weight, $value in $weights
+        &--w#{$weight}
+            font-weight: $value
+    @each $size, $value in $sizes
+        &--#{$size}
+            @include font-size($value)
+    &--capitalize
+        text-transform: capitalize
+    &--uppercase
+        text-transform: uppercase
+    &--link
+        color: inherit
+        &:hover
+            color: var(--jac-blue)
+    &--display-1
+        @include font-size($jac-display-1)
+    &--display-2
+        @include font-size($jac-display-2)
+    &--display-3
+        @include font-size($jac-display-3)
+    &--display-4
+        @include font-size($jac-display-4)
+    &--display-5
+        @include font-size($jac-display-5)
+    @each $align in (left, right, center, justify)
+        &--align-#{$align}
+            text-align: $align
+
+@include media-breakpoint-down (sm, $screen-breakpoints)
+    .text
+        &--display-1
+            @include font-size($jac-display-1 - 2)
+        &--display-2
+            @include font-size($jac-display-2 - 2)
+        &--display-3
+            @include font-size($jac-display-3 - 4)
+        &--display-4
+            @include font-size($jac-display-4 - 4)
+        &--display-5
+            @include font-size($jac-display-5 - 4)

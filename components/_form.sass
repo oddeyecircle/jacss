@@ -1,0 +1,73 @@
+=text-like-inputs
+    input[type="email"],
+    input[type="number"],
+    input[type="password"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="text"],
+    input[type="url"]
+        @content
+
+=button-like-inputs
+    input[type="button"],
+    input[type="reset"],
+    input[type="submit"]
+        @content
+
+form,
+.form
+    display: flex
+    flex-direction: column
+    flex-grow: 1
+    &.row
+        .form-field
+            justify-content: flex-end
+            display: flex
+            flex-direction: column
+            @include padding-horizontal($jac-margin-base)
+    &.form-horizontal
+        .form-field
+            display: flex
+            flex-direction: row
+            align-items: center
+            label
+                min-width: 20%
+                max-width: 30%
+
+.form-field
+    display: block
+    
+    @include margin($jac-margin-base, 0)
+    &.--line
+        @include text-like-inputs
+            background-color: transparent
+            border-color: transparent
+            border-bottom-color: $black
+            border-radius: 0
+            padding-top: 0
+            padding-bottom: 0
+            &:focus
+                border-color: transparent
+                box-shadow: none
+                border-bottom-color: rgba($jac-input-focus-color, .6)
+    @include text-like-inputs
+        appearance: none
+        width: 100%
+        border-radius: $jac-border-radius-small
+        @include border($jac-border-color)
+        @include font-size(14px)
+        @include padding($jac-padding-base)
+        &:read-only
+            background-color: $grey-light
+            cursor: not-allowed
+            pointer-events: none
+        &:focus
+            outline: none
+            border-color: rgba($jac-input-focus-color, .6)
+            box-shadow: 0 0 0 1px rgba($jac-input-focus-color, .3)
+    @include button-like-inputs
+        @extend button
+    label
+        @include font-size(14px)
+        font-weight: $jac-weight-bold
+    

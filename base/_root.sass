@@ -1,0 +1,9 @@
+\:root
+  @each $color, $value in $colors
+    --jac-#{$color}: #{$value}
+    --jac-#{$color}-rgb: #{hexToRGB($value)}
+  --jac-padding: #{$jac-unit-factor-2}
+  --jac-margin: #{$jac-unit-factor-1}
+
+  --jac-grey-background: #{$jac-body-background-color}
+  --jac-border-color: #{$jac-border-color}
