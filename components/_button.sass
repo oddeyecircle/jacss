@@ -1,5 +1,5 @@
 %disabled-button
-    color: darken($grey, 20%)
+    color: $grey-medium !important
     cursor: not-allowed
     border-color: transparent
 
@@ -8,8 +8,13 @@
     justify-content: flex-start
     align-items: center
     flex-wrap: wrap
-    .button:not(:last-child)
+    &.buttons-flex
+        .button
+            flex: 1
+    .button:not(:last-child):not(.--block)
         @include margin(0, $jac-margin-1, $jac-margin-1, 0)
+    .button:not(:last-child).--block
+        @include margin-single(bottom, $jac-margin-1)
 
 .button
     border: none
@@ -18,7 +23,7 @@
     transition: background 120ms linear, color 120ms linear
     align-self: flex-start
     cursor: pointer
-    @include padding($jac-padding-base, $jac-padding-1)
+    @include padding($jac-padding-base, $jac-padding-2)
     @include button(map-get($jac-grey, 300))
     &:disabled
         background-color: $grey
@@ -43,6 +48,7 @@
             &:focus,
             &:active
                 background-color: transparent
+                color: inherit
     &.--rounded
         border-radius: $jac-border-radius-large
     &.--block
@@ -52,14 +58,15 @@
     &.--inverted
         background-color: transparent
     &.--small
-        @include font-size(12px)
-        @include padding(1px, $jac-padding-base)
+        @include font-size($jac-size-small)
+        @include padding(1px, $jac-padding-1)
+        border-radius: $jac-border-radius-small
     &.--big
-        @include font-size(20px)
-        @include padding($jac-padding-1, $jac-padding-3)
+        @include font-size($jac-size-big)
+        @include padding($jac-padding-base, $jac-padding-3)
     &.--large
-        @include font-size(24px)
-        @include padding($jac-padding-2, $jac-padding-5)
+        @include font-size($jac-size-large)
+        @include padding($jac-padding-1, $jac-padding-5)
 
 @each $color, $value in $colors
     .button-#{$color}
