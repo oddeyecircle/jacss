@@ -5,17 +5,11 @@
 
 .buttons
     display: flex
+    justify-content: flex-start
+    align-items: center
     flex-wrap: wrap
-    .button
-        white-space: nowrap
-        flex: 1
-        @include margin($jac-margin-base)
-        &:first-of-type
-            margin-left: 0
-            margin-inline-start: unset
-        &:last-of-type
-            margin-right: 0
-            margin-inline-end: unset
+    .button:not(:last-child)
+        @include margin(0, $jac-margin-1, $jac-margin-1, 0)
 
 .button
     border: none
@@ -37,6 +31,11 @@
             border-color: transparent
     &.--outline,
         background-color: transparent
+        @if not $button-outline-is-hoverable
+            &:active,
+            &:focus,
+            &:hover
+                background-color: transparent
         &:disabled
             border-color: $grey
             @extend %disabled-button
@@ -68,5 +67,9 @@
 
 @include media-breakpoint-down(sm, $screen-breakpoints)
     .buttons
-        .button
-            @include margin-horizontal(0)
+        &.--mobile-flex
+            flex-wrap: wrap
+            .button
+                flex-basis: 100%
+                text-align: center
+                @include margin($jac-margin-base, 0)

@@ -1,6 +1,6 @@
 =button($backgroundColor, $color: null)
     background-color: $backgroundColor
-    border: $jac-border-width solid $backgroundColor
+    border: $jac-button-border-width solid $backgroundColor
     @if $color
         color: $color
     @else
@@ -16,10 +16,11 @@
         box-shadow: 0 0 0 1px rgba($backgroundColor, .6)
     &.--outline
         color: $backgroundColor
-        &:active,
-        &:focus,
-        &:hover
-            color: getContrast($backgroundColor)
+        @if $button-outline-is-hoverable
+            &:active,
+            &:focus,
+            &:hover
+                color: getContrast($backgroundColor)
     &.--inverted
         color: $backgroundColor
         border-color: transparent

@@ -8,13 +8,12 @@ $grey-600: #818181 !default
 $grey-700: #606060 !default
 $grey-800: #434343 !default
 $grey-900: #262626 !default
+$dark: $grey-900 !default
 $black: #000 !default
 
 $jac-grey: (100: $grey-100, 200: $grey-200, 300: $grey-300, 400: $grey-400, 500: $grey-500, 600: $grey-600, 700: $grey-700, 800: $grey-800, 900: $grey-900) !default
 
-$blue: #0e59fc !default
-$indigo: #414bb8 !default
-$purple: #7b4ac0 !default
+
 $pink: #ffb1b5 !default
 $red: #eb483d !default
 $orange: #ff9811 !default
@@ -22,6 +21,9 @@ $yellow: #ffe343 !default
 $green: #22ca70 !default
 $teal: #4bddcf !default
 $cyan: #01c5e7 !default
+$blue: #165cf3 !default
+$indigo: #414bb8 !default
+$purple: #7b4ac0 !default
 $magenta: #f83aa9 !default
 
 $grey-light: map-get($jac-grey, 200) !default
@@ -29,7 +31,7 @@ $grey: map-get($jac-grey, 400) !default
 $grey-medium: map-get($jac-grey, 600) !default
 $grey-dark: map-get($jac-grey, 800) !default
 
-$colors: ('blue': $blue, 'indigo': $indigo, 'purple': $purple, 'pink': $pink, 'red': $red, 'orange': $orange, 'yellow': $yellow, 'green': $green, 'teal': $teal, 'cyan': $cyan, 'magenta': $magenta, 'white': $white, 'grey-light': $grey-light, 'grey': $grey, 'grey-medium': $grey-medium, 'grey-dark': $grey-dark, 'black': $black) !default
+$colors: ('blue': $blue, 'indigo': $indigo, 'purple': $purple, 'pink': $pink, 'red': $red, 'orange': $orange, 'yellow': $yellow, 'green': $green, 'teal': $teal, 'cyan': $cyan, 'magenta': $magenta, 'white': $white, 'grey-light': $grey-light, 'grey': $grey, 'grey-medium': $grey-medium, 'grey-dark': $grey-dark, 'dark': $black, 'black': $black) !default
 
 $jac-border-color: map-get($jac-grey, 300)
 
@@ -37,5 +39,7 @@ $jac-body-background-color: map-get($jac-grey, 100) !default
 $jac-body-text-color: map-get($jac-grey, 800) !default
 
 $jac-default-hover-color: rgba($black, .024) !default
+
+$jac-navbar-link-hover-color: $blue !default
 
 $jac-input-focus-color: $blue !default

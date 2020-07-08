@@ -1,12 +1,18 @@
 @each $color, $value in $colors
     .border--color-#{$color}
         @include border($value)
-    
+
 .--no-border
+    border: none    
+
+.--sharp
     border-radius: 0
 
 .--border-small
     border-radius: $jac-border-radius-small
+
+.--border-medium
+    border-radius: $jac-border-radius-medium
 
 .--rounded
     border-radius: 9999px
