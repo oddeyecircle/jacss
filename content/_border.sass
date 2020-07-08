@@ -1,12 +1,31 @@
 @each $color, $value in $colors
     .border--color-#{$color}
         @include border($value)
+    .border--color-#{$color}-tint
+        @include border(#{get-tint($value)})
+    .border--color-#{$color}-shade
+        @include border(#{get-shade($value)})
 
 .--no-border
-    border: none    
+    border: none
+    &-t
+        border-top: none   
+    &-r
+        border-right: none 
+    &-b
+        border-bottom: none
+    &-l
+        border-left: none
+    &-y
+        border-top: none
+        border-bottom: none
+    &-x
+        border-left: none
+        border-right: none     
 
 .--sharp
     border-radius: 0
+
 
 .--border-small
     border-radius: $jac-border-radius-small
