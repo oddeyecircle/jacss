@@ -1,27 +1,29 @@
-=button($backgroundColor, $color: null)
+=button($backgroundColor, $color: $backgroundColor, $boxShadowColor: $backgroundColor, $borderColor: $backgroundColor)
     background-color: $backgroundColor
-    border: $jac-button-border-width solid $backgroundColor
+    border: $jac-button-border-width solid $borderColor
     @if $color
         color: $color
     @else
         color: getContrast($backgroundColor)
+    &:hover
+        border-color: $borderColor
+    &:focus,
+    &:active
+        border-color: $boxShadowColor
+        background-color: darken($backgroundColor, 5%)
+        outline: none
+        box-shadow: 0 0 0 1px rgba($boxShadowColor, .6)
     &:active
         background-color: darken($backgroundColor, 10%)
-    &:hover,
-    &:focus
-        border-color: $backgroundColor
-        background-color: darken($backgroundColor, 5%)
-    &:focus
-        outline: none
-        box-shadow: 0 0 0 1px rgba($backgroundColor, .6)
     &.--outline
         color: $backgroundColor
         @if $button-outline-is-hoverable
             &:active,
             &:focus,
             &:hover
+                border-color: get-shade($borderColor)
     &.--inverted
-        color: $backgroundColor
+        color: $color
         border-color: transparent
         &:hover,
         &:focus
@@ -30,7 +32,7 @@
             background-color: rgba($backgroundColor, .3)
     &.--big
         &:focus
-            box-shadow: 0 0 0 2px rgba($backgroundColor, .3)
+            box-shadow: 0 0 0 2px rgba($boxShadowColor, .3)
     &.--large
         &:focus
-            box-shadow: 0 0 0 3px rgba($backgroundColor, .3)
+            box-shadow: 0 0 0 3px rgba($boxShadowColor, .3)
