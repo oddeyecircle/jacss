@@ -31,6 +31,11 @@
     flex-basis: (100% / 12) * $i
     flex-grow: 0
     flex-shrink: 0
+  .column--push-#{$i}-start
+    @include margin-single(left, (100% / 12) * $i) 
+  .column--push-#{$i}-end
+    @include margin-single(right, (100% / 12) *$i)
+
 
 
 
@@ -54,6 +59,10 @@
         flex-basis: (100% / 12) * $i
         flex-shrink: 0
         flex-grow: 0
+      .column--push-#{$i}-start-#{$infix}
+        @include margin-single(left, (100% / 12) * $i) 
+      .column--push-#{$i}-end-#{$infix}
+        @include margin-single(right, (100% / 12) *$i)
     @media screen and (orientation: portrait)
       .column--#{$infix}-portrait
       display: flex

@@ -11,6 +11,7 @@
     @include padding($jac-padding-base, $jac-padding-2)
     display: inline-block
     vertical-align: baseline
+    font-weight: 300
     &:hover,
     &:active,
     &:focus
@@ -50,7 +51,7 @@
 
 @each $breakpoint in map-keys($screen-breakpoints)
     $infix: breakpoint-infix($breakpoint)
-    @include media-breakpoint-down($breakpoint, $screen-breakpoints)
+    @include media-breakpoint-up($breakpoint, $screen-breakpoints)
         .dropdown--push
             &-start-#{$infix}
                 .dropdown-menu
