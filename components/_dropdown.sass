@@ -6,13 +6,16 @@
             display: block
 
 .dropdown-toggler
-    @include button(transparent, $color: $black, $boxShadowColor: $blue, $borderColor: $grey)
+    @include button(white, $color: $black, $boxShadowColor: $blue, $borderColor: $grey)
     border-radius: $jac-border-radius-small
     @include padding($jac-padding-base, $jac-padding-2)
+    display: inline-block
+    vertical-align: baseline
     &:hover,
     &:active,
     &:focus
         border-color: get-shade($grey)
+        background-color: transparent
         + .dropdown-menu
             display: block
 
@@ -29,6 +32,31 @@
     @include padding($jac-padding-1)
     background-color: white
     border-radius: $jac-border-radius-small
+    @extend .z1
+    
 
 .dropdown-item:not(:last-of-type)
     @include margin-single(bottom, $jac-margin-base)
+
+.dropdown--push
+    &-start
+        .dropdown-menu
+            right: end
+            left: 0
+    &-end
+        .dropdown-menu
+            left: auto
+            right: 0
+
+@each $breakpoint in map-keys($screen-breakpoints)
+    $infix: breakpoint-infix($breakpoint)
+    @include media-breakpoint-down($breakpoint, $screen-breakpoints)
+        .dropdown--push
+            &-start-#{$infix}
+                .dropdown-menu
+                    right: end
+                    left: 0
+            &-end-#{$infix}
+                .dropdown-menu
+                    left: auto
+                    right: 0

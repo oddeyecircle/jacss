@@ -1,4 +1,4 @@
-=button($backgroundColor, $color: $backgroundColor, $boxShadowColor: $backgroundColor, $borderColor: $backgroundColor)
+=button($backgroundColor, $color: getContrast($backgroundColor), $boxShadowColor: $backgroundColor, $borderColor: $backgroundColor)
     background-color: $backgroundColor
     border: $jac-button-border-width solid $borderColor
     @if $color
@@ -6,7 +6,8 @@
     @else
         color: getContrast($backgroundColor)
     &:hover
-        border-color: $borderColor
+        border-color: if($borderColor == true, $borderColor, get-shade($backgroundColor))
+        background-color: get-shade($backgroundColor)
     &:focus,
     &:active
         border-color: $boxShadowColor
@@ -17,11 +18,13 @@
         background-color: darken($backgroundColor, 10%)
     &.--outline
         color: $backgroundColor
+        background-color: transparent
         @if $button-outline-is-hoverable
             &:active,
             &:focus,
             &:hover
                 border-color: get-shade($borderColor)
+
     &.--inverted
         color: $color
         border-color: transparent
